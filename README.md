@@ -1,13 +1,14 @@
-## VSCode Remote Container Development 
+## Dev Environment
+### VSCode Remote Container Development 
 
-If you have any issues related to the source folder permissions, you can check it by running the following command in host machine
+If you have any issues related to the source folder permissions in container, you can try to solve it by running the following command (caused by SELinux enforcing mode) in host machine.
 
 ```bash
-	sudo setenforce 0
+sudo setenforce 0
 ```
 
 
-## By using anaconda
+### By using anaconda
 
 1. Install conda using [Install Conda in Linux](https://docs.conda.io/projects/conda/en/latest/user-guide/install/linux.html) 
 2. Run the following commands
@@ -25,12 +26,11 @@ If you have any issues related to the source folder permissions, you can check i
 	- Shared libraries are downloaded into ${arrow-env}/lib
 	- ${arrow-env} is the path of the arrow environment 
 
-## Building 
+## Build
 
 ```bash
-
-	mkdir release
-	cd release
-	cmake ../
-	make
+mkdir release
+cd release
+cmake ../
+make
 ```
