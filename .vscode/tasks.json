@@ -1,0 +1,77 @@
+{
+        "tasks": [
+                //For conda env tasks
+                {
+                        "type": "shell",
+                        "label": "Conda : Create executables",
+                        "command": "make",
+                        "options": {
+                                "cwd": "${workspaceFolder}/release"
+                        },
+                        "dependsOn": [
+                                "Conda : Launch CMake build"
+                        ]
+                },
+                {
+                        "type": "shell",
+                        "label": "Conda : Launch CMake build",
+                        "command": "/usr/bin/cmake",
+                        "args": [
+                                "-DCMAKE_BUILD_TYPE=Debug",
+                                "-B",
+                                "${workspaceFolder}/release"
+                        ],
+                        "options": {
+                                "cwd": "${workspaceFolder}"
+                        },
+                        "group": {
+                                "kind": "build",
+                                "isDefault": true
+                        }
+                },
+                {
+                        "type": "shell",
+                        "label": "Conda : Activate conda",
+                        "command": "source ~/.bashrc && conda && conda activate arrow",
+                        "dependsOn": []
+                },
+                //For container tasks
+                {
+                        "type": "shell",
+                        "label": "Run example",
+                        "command": "make && ./example",
+                        "options": {
+                                "cwd": "${workspaceFolder}/release"
+                        },
+                },
+                {
+                        "type": "shell",
+                        "label": "Container : Create executables",
+                        "command": "make",
+                        "options": {
+                                "cwd": "${workspaceFolder}/release"
+                        },
+                        "dependsOn": [
+                                "Container : Launch CMake build"
+                        ]
+                },
+                {
+                        "type": "shell",
+                        "label": "Container : Launch CMake build",
+                        "command": "/usr/bin/cmake",
+                        "args": [
+                                "-DCMAKE_BUILD_TYPE=Debug",
+                                "--build",
+                                "release"
+                        ],
+                        "options": {
+                                "cwd": "${workspaceFolder}"
+                        },
+                        "group": {
+                                "kind": "build",
+                                "isDefault": true
+                        }
+                }
+        ],
+        "version": "2.0.0"
+}
