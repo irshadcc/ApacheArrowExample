@@ -6,7 +6,7 @@
                         "label": "Conda : Create executables",
                         "command": "make",
                         "options": {
-                                "cwd": "${workspaceFolder}/release"
+                                "cwd": "${workspaceFolder}/cpp/release"
                         },
                         "dependsOn": [
                                 "Conda : Launch CMake build"
@@ -19,21 +19,23 @@
                         "args": [
                                 "-DCMAKE_BUILD_TYPE=Debug",
                                 "-B",
-                                "${workspaceFolder}/release"
+                                "${workspaceFolder}/cpp/release"
                         ],
                         "options": {
-                                "cwd": "${workspaceFolder}"
+                                "cwd": "${workspaceFolder}/cpp"
                         },
                         "group": {
                                 "kind": "build",
                                 "isDefault": true
-                        }
+                        },
+                        "dependsOn": [
+                                "Conda : Activate conda"
+                        ]
                 },
                 {
                         "type": "shell",
                         "label": "Conda : Activate conda",
-                        "command": "source ~/.bashrc && conda && conda activate arrow",
-                        "dependsOn": []
+                        "command": "source ~/.bashrc && conda && conda activate arrow"
                 },
                 //For container tasks
                 {

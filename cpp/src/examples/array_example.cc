@@ -23,7 +23,7 @@ void int64_example() {
 	std::shared_ptr<arrow::Array> array = *maybe_array;
 	std::cout << "Array Length = " << array->length() << std::endl ; 
 
-	std::shared_ptr<arrow::Array> slicedArray = array->Slice(3, 7);
+	std::shared_ptr<arrow::Array> slicedArray = array->Slice(3, 2);
 	std::shared_ptr<arrow::Int64Array> int64Array = std::static_pointer_cast<arrow::Int64Array>(slicedArray);
 
 	for(int i = 0 ; i < int64Array->length(); i++) {
