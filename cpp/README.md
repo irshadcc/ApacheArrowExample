@@ -41,7 +41,7 @@ make
 
 ## Running
 ```bash
-	# Make sure LD_LIBRARY_PATH contains libarrow and libparquet
-	./release/example
+# Make sure LD_LIBRARY_PATH contains libarrow and libparquet
+./release/example
 
 ```
