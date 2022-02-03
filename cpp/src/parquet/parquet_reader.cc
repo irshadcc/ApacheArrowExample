@@ -61,9 +61,8 @@ void ParquetReader::init_file_reader(const std::string& file_path) {
 	
 	this->column_indices.reserve(schema->num_fields());
 	for(int i = 0 ; i < schema->num_fields(); i++) {
-		column_indices[i] = schema->GetFieldIndex(schema->field(i)->name()) ;
+		column_indices.push_back(schema->GetFieldIndex(schema->field(i)->name())) ;
 	} 
-	std::cout << "Hello : " << column_indices.size()  << std::endl ;
 }
 
 void ParquetReader::init_rows() {
@@ -75,10 +74,10 @@ void ParquetReader::init_rows() {
 	this->total_rows = table->num_rows();
 
 
-	std::cout << "\n---DEBUG--\n" ;
-	for(int i = 0 ; i < column_indices.size(); i++) {
-		std::shared_ptr<arrow::ChunkedArray> array = table->column(i);
-		std::cout << array->ToString(); 
-	}
-	std::cout << "\n---DEBUG--\n" ;
+	// for(int i = 0 ; i < column_indices.size(); i++) {
+	// 	std::shared_ptr<arrow::ChunkedArray> array = table->column(i);
+	// 	std::cout << array->ToString(); 
+	// }
+	// std::clog << "\n The number of rows : " << this->total_rows ;
+	// std::cout << "\n---DEBUG--\n" ;
 }
