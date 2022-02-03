@@ -19,6 +19,10 @@ sudo setenforce 0
 
 	conda install arrow-cpp=6.0.* -c conda-forge
 	conda install pyarrow=6.0.* -c conda-forge
+
+	source build_env.sh
+	init_envs
+
    ``` 
 3. Edit .vscode json files
 	- Edit c_cpp_properties.json to for the vs code extension to configure include path
@@ -33,4 +37,11 @@ mkdir release
 cd release
 cmake ../
 make
+```
+
+## Running
+```bash
+	# Make sure LD_LIBRARY_PATH contains libarrow and libparquet
+	./release/example
+
 ```

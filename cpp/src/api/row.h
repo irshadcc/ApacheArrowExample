@@ -24,14 +24,16 @@ class Row {
 
 	private: 
 
-	std::vector<std::shared_ptr<arrow::Array>> column_values; 
+	std::vector<std::shared_ptr<arrow::ChunkedArray>> column_values; 
 
 	public:
 
-	void set_column_value(int index, std::shared_ptr<arrow::Array> column_value); 
+	Row(int no_columns);
 
-	std::shared_ptr<arrow::Array> get_column_value(const int index) const;
+	void set_column_value(int index, std::shared_ptr<arrow::ChunkedArray> column_value); 
 
-	friend std::ostream operator<<(std::ostream& os, const Row& row); 
+	std::shared_ptr<arrow::ChunkedArray> get_column_value(const int index) const;
+
+	friend std::ostream& operator<<(std::ostream& os, const Row& row); 
 };
 #endif

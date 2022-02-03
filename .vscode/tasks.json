@@ -35,7 +35,10 @@
                 {
                         "type": "shell",
                         "label": "Conda : Activate conda",
-                        "command": "source ~/.bashrc && conda && conda activate arrow"
+                        "command": "source ~/.bashrc && conda && conda activate arrow && source build_env.sh && init_envs",
+                        "options": {
+                                "cwd": "${workspaceFolder}/cpp"
+                        }
                 },
                 //For container tasks
                 {
